@@ -138,7 +138,7 @@ import javax.swing.ImageIcon;
                 if ( ( board.getCell( i, pieceColumn ).getPieceOnSquare()
                     == null || isEnemy( board, i, pieceColumn ) ) ){
                     moves.add( i + "," + pieceColumn );
-                
+                    count++;
                     if ( isEnemy( board, i, pieceColumn ) ){
                         break;
                     }
@@ -172,7 +172,7 @@ import javax.swing.ImageIcon;
                 if ( ( board.getCell( i, pieceColumn ).getPieceOnSquare()
                     == null || isEnemy( board, i, pieceColumn ) ) ){
                     moves.add( i + "," + pieceColumn );
-          
+                    count++;
                     if ( isEnemy( board, i, pieceColumn ) ){
                         break;
                     }
@@ -206,7 +206,7 @@ import javax.swing.ImageIcon;
                 if ( ( board.getCell( pieceRow, i ).getPieceOnSquare()
                     == null || isEnemy( board, pieceRow, i ) ) ){
                     moves.add( pieceRow + "," + i );
- 
+                    count++;
                     if ( isEnemy( board, pieceRow, i ) ){
                         break;
                     }
@@ -240,7 +240,7 @@ import javax.swing.ImageIcon;
                 if ( ( board.getCell(pieceRow, i ).getPieceOnSquare()
                     == null || isEnemy( board, pieceRow, i ) ) ){
                     moves.add( pieceRow + "," + i );
- 
+                    count++;
                     if ( isEnemy( board, pieceRow, i ) ){
                         break;
                     }
@@ -279,7 +279,7 @@ import javax.swing.ImageIcon;
                 }
                 else if ( isEnemy( board, pieceRow - i, pieceColumn - i ) ){
                     moves.add( ( pieceRow - i ) + "," + ( pieceColumn - i ) );
-                    count++;
+               
                     break;
                 }
                 else
@@ -316,7 +316,7 @@ import javax.swing.ImageIcon;
                 }
                 else if ( isEnemy( board, pieceRow - i, pieceColumn + i ) ){
                     moves.add( ( pieceRow - i ) + "," + ( pieceColumn + i ) );
-                    count++;
+               
                     break;
                 }
                 else
@@ -353,7 +353,7 @@ import javax.swing.ImageIcon;
                 }
                 else if ( isEnemy( board, pieceRow + i, pieceColumn - i ) ){
                     moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
-                    count++;
+          
                     break;
                 }
                 else
@@ -390,7 +390,7 @@ import javax.swing.ImageIcon;
                 }
                 else if ( isEnemy( board, pieceRow + i, pieceColumn + i ) ){
                     moves.add( ( pieceRow + i ) + "," + ( pieceColumn + i ) );
-                    count++;
+              
                     break;
                 }
                 else
