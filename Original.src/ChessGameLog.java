@@ -10,7 +10,7 @@ public class ChessGameLog extends JScrollPane {
         super(
             new JTextArea("", 5, 30),
             ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
-            JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS
+            ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS
         );
         textArea = ((JTextArea) this.getViewport().getView());
     }

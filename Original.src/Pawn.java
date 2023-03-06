@@ -72,50 +72,46 @@ public class Pawn
     protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
         ArrayList<String> moves = new ArrayList<String>();
         if ( isPieceOnScreen() ){
-            int currRow =
-                getColorOfPiece() == ChessGamePiece.WHITE
-                    ? ( pieceRow - 1 )
-                    : ( pieceRow + 1 );
-            int count = 1;
             int maxIter = notMoved ? 2 : 1;
-            // check for normal moves
-            while ( count <= maxIter ){ // only loop while we have open slots and have not passed our
-              // limit
-                if ( isOnScreen( currRow, pieceColumn )
-                    && board.getCell( currRow,
-                        pieceColumn ).getPieceOnSquare() == null ){
+            int currRow = getStartingRow();
+            int count = 1;
+            while ( count <= maxIter && isOnScreen( currRow, pieceColumn ) ){
+                if ( isEmptySquare(board, currRow, pieceColumn) ){
                     moves.add( currRow + "," + pieceColumn );
-                }
-                else
-                {
+                } else {
                     break;
                 }
-                currRow =
-                    ( getColorOfPiece() == ChessGamePiece.WHITE )
-                        ? ( currRow - 1 )
-                        : ( currRow + 1 );
+                currRow = getNextRow(currRow);
                 count++;
             }
-            // check for enemy capture points
-            if ( getColorOfPiece() == ChessGamePiece.WHITE ){
-                if ( isEnemy( board, pieceRow - 1, pieceColumn - 1 ) ){
-                    moves.add( ( pieceRow - 1 ) + "," + ( pieceColumn - 1 ) );
-                }
-                if ( isEnemy( board, pieceRow - 1, pieceColumn + 1 ) ){
-                    moves.add( ( pieceRow - 1 ) + "," + ( pieceColumn + 1 ) );
-                }
-            }
-            else
-            {
-                if ( isEnemy( board, pieceRow + 1, pieceColumn - 1 ) ){
-                    moves.add( ( pieceRow + 1 ) + "," + ( pieceColumn - 1 ) );
-                }
-                if ( isEnemy( board, pieceRow + 1, pieceColumn + 1 ) ){
-                    moves.add( ( pieceRow + 1 ) + "," + ( pieceColumn + 1 ) );
-                }
-            }
+            addEnemyCaptureMoves(board, moves);
         }
         return moves;
+    }
+
+    private int getStartingRow() {
+        return getColorOfPiece() == ChessGamePiece.WHITE ? ( pieceRow - 1 ) : ( pieceRow + 1 );
+    }
+
+    private int getNextRow(int currRow) {
+        return ( getColorOfPiece() == ChessGamePiece.WHITE ) ? ( currRow - 1 ) : ( currRow + 1 );
+    }
+
+    private boolean isEmptySquare(ChessGameBoard board, int row, int col) {
+        return board.getCell(row, col).getPieceOnSquare() == null;
+    }
+
+    private void addEnemyCaptureMoves(ChessGameBoard board, ArrayList<String> moves) {
+        int leftRow = getColorOfPiece() == ChessGamePiece.WHITE ? ( pieceRow - 1 ) : ( pieceRow + 1 );
+        int rightRow = getColorOfPiece() == ChessGamePiece.WHITE ? ( pieceRow - 1 ) : ( pieceRow + 1 );
+        int leftCol = pieceColumn - 1;
+        int rightCol = pieceColumn + 1;
+        if ( isOnScreen( leftRow, leftCol ) && isEnemy( board, leftRow, leftCol ) ){
+            moves.add( leftRow + "," + leftCol );
+        }
+        if ( isOnScreen( rightRow, rightCol ) && isEnemy( board, rightRow, rightCol ) ){
+            moves.add( rightRow + "," + rightCol );
+        }
     }
     /**
      * Creates an icon for this piece depending on the piece's color.
