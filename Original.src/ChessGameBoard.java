@@ -7,7 +7,7 @@ import java.awt.GridLayout;
 
 public class ChessGameBoard extends JPanel{
     private BoardSquare[][] chessCells;
-    private BoardListener   listener;
+    private transient BoardListener   listener;
  
     public BoardSquare[][] getCells(){
         return chessCells;
