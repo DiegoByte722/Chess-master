@@ -75,9 +75,7 @@ public class ChessGameBoard extends JPanel{
         return blackPieces;
     }
     // ----------------------------------------------------------
-    /**
-     * Create a new ChessGameBoard object.
-     */
+
     public ChessGameBoard(){
         this.setLayout( new GridLayout( 8, 8, 1, 1 ) );
         listener = new BoardListener();
@@ -111,8 +109,7 @@ public class ChessGameBoard extends JPanel{
             }
         }
         repaint();
-        //revalidate();
-        // only the combination of these two calls work...*shrug*
+     
     }
   
     public void initializeBoard(){
@@ -167,9 +164,7 @@ public class ChessGameBoard extends JPanel{
         }
     }
     // ----------------------------------------------------------
-    /**
-     * Clears the colors on the board.
-     */
+ 
     public void clearColorsOnBoard(){
         for ( int i = 0; i < chessCells.length; i++ ){
             for ( int j = 0; j < chessCells[0].length; j++ ){
@@ -187,12 +182,7 @@ public class ChessGameBoard extends JPanel{
     private class BoardListener
         implements MouseListener
     {
-        /**
-         * Do an action when the left mouse button is clicked.
-         *
-         * @param e
-         *            the event from the listener
-         */
+
         public void mouseClicked( MouseEvent e ){
             if ( e.getButton() == MouseEvent.BUTTON1 &&
                 getParent() instanceof ChessPanel ){
