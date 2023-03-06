@@ -124,20 +124,18 @@ public class ChessGameBoard extends JPanel{
     }
 
     private ChessGamePiece initializePiece(int i, int j) {
-        ChessGamePiece pieceToAdd = null;
         int colNum = i == 0 ? ChessGamePiece.BLACK : ChessGamePiece.WHITE;
         if (j == 0 || j == 7) {
-            pieceToAdd = new Rook(this, i, j, colNum);
+            return new Rook(this, i, j, colNum);
         } else if (j == 1 || j == 6) {
-            pieceToAdd = new Knight(this, i, j, colNum);
+            return new Knight(this, i, j, colNum);
         } else if (j == 2 || j == 5) {
-            pieceToAdd = new Bishop(this, i, j, colNum);
+            return new Bishop(this, i, j, colNum);
         } else if (j == 3) {
-            pieceToAdd = new King(this, i, j, colNum);
-        } else if (j == 4) {
-            pieceToAdd = new Queen(this, i, j, colNum);
+            return new King(this, i, j, colNum);
+        } else {
+            return new Queen(this, i, j, colNum);
         }
-        return pieceToAdd;
     }
     // ----------------------------------------------------------
 
