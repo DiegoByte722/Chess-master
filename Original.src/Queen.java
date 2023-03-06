@@ -1,16 +1,15 @@
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
-
+// import java.awt.Color;
 // -------------------------------------------------------------------------
 
 public class Queen
     extends ChessGamePiece{
-    // ----------------------------------------------------------
 
     public Queen( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color );
     }
-   
+
     @Override
     protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
         ArrayList<String> northEastMoves = calculateNorthEastMoves( board, 8 );

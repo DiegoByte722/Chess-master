@@ -4,16 +4,11 @@ import java.awt.event.MouseListener;
 import java.awt.Color;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
-// -------------------------------------------------------------------------
-/**
- * The panel that represents the Chess game board. Contains a few methods that
- * allow other classes to access the physical board.
- */
+
 public class ChessGameBoard extends JPanel{
     private BoardSquare[][] chessCells;
     private BoardListener   listener;
-    // ----------------------------------------------------------
-
+ 
     public BoardSquare[][] getCells(){
         return chessCells;
     }
@@ -23,7 +18,6 @@ public class ChessGameBoard extends JPanel{
             row < chessCells.length && col < chessCells[0].length
             && row >= 0 && col >= 0;
     }
-    // ----------------------------------------------------------
 
     public BoardSquare getCell( int row, int col ){
         if ( validateCoordinates( row, col ) ){
@@ -31,7 +25,6 @@ public class ChessGameBoard extends JPanel{
         }
         return null;
     }
-    // ----------------------------------------------------------
 
     public void clearCell(int row, int col){
         if ( validateCoordinates( row, col ) ){
@@ -75,7 +68,7 @@ public class ChessGameBoard extends JPanel{
         return blackPieces;
     }
     // ----------------------------------------------------------
-
+ 
     public ChessGameBoard(){
         this.setLayout( new GridLayout( 8, 8, 1, 1 ) );
         listener = new BoardListener();
@@ -109,23 +102,23 @@ public class ChessGameBoard extends JPanel{
             }
         }
         repaint();
-     
+
     }
-  
+
     public void initializeBoard(){
         resetBoard( false );
         for ( int i = 0; i < chessCells.length; i++ ){
             for ( int j = 0; j < chessCells[0].length; j++ ){
                 ChessGamePiece pieceToAdd;
-                if ( i == 1 ) // black pawns
+                if ( i == 1 ) 
                 {
                     pieceToAdd = new Pawn( this, i, j, ChessGamePiece.BLACK );
                 }
-                else if ( i == 6 ) // white pawns
+                else if ( i == 6 ) 
                 {
                     pieceToAdd = new Pawn( this, i, j, ChessGamePiece.WHITE );
                 }
-                else if ( i == 0 || i == 7 ) // main rows
+                else if ( i == 0 || i == 7 ) 
                 {
                     int colNum =
                         i == 0 ? ChessGamePiece.BLACK : ChessGamePiece.WHITE;
@@ -164,7 +157,7 @@ public class ChessGameBoard extends JPanel{
         }
     }
     // ----------------------------------------------------------
- 
+
     public void clearColorsOnBoard(){
         for ( int i = 0; i < chessCells.length; i++ ){
             for ( int j = 0; j < chessCells[0].length; j++ ){

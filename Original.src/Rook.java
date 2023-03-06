@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Rook
     extends ChessGamePiece{
-    // ----------------------------------------------------------
 
     public Rook( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color );
@@ -23,7 +22,7 @@ public class Rook
         allMoves.addAll( eastMoves );
         return allMoves;
     }
- 
+
     @Override
     public ImageIcon createImageByPieceType(){
         if ( getColorOfPiece() == ChessGamePiece.WHITE ){

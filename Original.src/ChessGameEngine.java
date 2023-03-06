@@ -3,10 +3,7 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import java.awt.event.MouseEvent;
 // -------------------------------------------------------------------------
-/**
- * This is the backend behind the Chess game. Handles the turn-based aspects of
- * the game, click events, and determines win/lose conditions.
- */
+
 public class ChessGameEngine{
     private ChessGamePiece currentPiece;
     private boolean        firstClick;
@@ -15,7 +12,7 @@ public class ChessGameEngine{
     private King           king1;
     private King           king2;
     // ----------------------------------------------------------
-      
+
     public ChessGameEngine( ChessGameBoard board ){
         firstClick = true;
         currentPlayer = 1;
@@ -45,7 +42,7 @@ public class ChessGameEngine{
                 + "game has been started. Player 1 (white) will play "
                 + "against Player 2 (black). BEGIN!" );
     }
- 
+
     private void nextTurn(){
         currentPlayer = ( currentPlayer == 1 ) ? 2 : 1;
         ( (ChessPanel)board.getParent() ).getGameLog().addToLog(
@@ -76,7 +73,7 @@ public class ChessGameEngine{
         }
         return false;
     }
- 
+
     private boolean selectedPieceIsValid(){
         if ( currentPiece == null ) 
         {
@@ -90,7 +87,7 @@ public class ChessGameEngine{
             return false;
         }
         else
- 
+  
         {
             if ( currentPiece.getColorOfPiece() == ChessGamePiece.WHITE ){
                 return true;
@@ -114,7 +111,7 @@ public class ChessGameEngine{
             return king2.isChecked( board );
         }
     }
- 
+
     private void askUserToPlayAgain( String endGameStr ){
         int resp =
             JOptionPane.showConfirmDialog( board.getParent(), endGameStr
@@ -125,7 +122,7 @@ public class ChessGameEngine{
         else
         {
             board.resetBoard( false );
-          
+     
         }
     }
 
@@ -154,7 +151,7 @@ public class ChessGameEngine{
                     JOptionPane.WARNING_MESSAGE );
             }
             currentPlayer = currentPlayer == 1 ? 2 : 1;
-       
+           
         }
         currentPlayer = origPlayer;
         nextTurn();
@@ -162,22 +159,23 @@ public class ChessGameEngine{
 
     public int determineGameLost(){
         if ( king1.isChecked( board ) && !playerHasLegalMoves( 1 ) ) 
-        // loss
+    
         {
             return 1;
         }
-        if ( king2.isChecked( board ) && !playerHasLegalMoves( 2 ) ) 
+        if ( king2.isChecked( board ) && !playerHasLegalMoves( 2 ) )
+      
         {
             return 2;
         }
         if ( ( !king1.isChecked( board ) && !playerHasLegalMoves( 1 ) )
             || ( !king2.isChecked( board ) && !playerHasLegalMoves( 2 ) )
             || ( board.getAllWhitePieces().size() == 1 &&
-                board.getAllBlackPieces().size() == 1 ) )
+                board.getAllBlackPieces().size() == 1 ) ) 
         {
             return -1;
         }
-        return 0;
+        return 0; 
     }
     // ----------------------------------------------------------
 
@@ -243,7 +241,7 @@ public class ChessGameEngine{
                 firstClick = true;
             }
             else
-         
+
             {
                 firstClick = true;
             }
