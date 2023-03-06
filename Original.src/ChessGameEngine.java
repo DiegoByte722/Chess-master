@@ -78,11 +78,11 @@ public class ChessGameEngine{
     }
  
     private boolean selectedPieceIsValid(){
-        if ( currentPiece == null ) // user tried to select an empty square
+        if ( currentPiece == null ) 
         {
             return false;
         }
-        if ( currentPlayer == 2 ) // black player
+        if ( currentPlayer == 2 ) 
         {
             if ( currentPiece.getColorOfPiece() == ChessGamePiece.BLACK ){
                 return true;
@@ -90,7 +90,7 @@ public class ChessGameEngine{
             return false;
         }
         else
-        // white player
+ 
         {
             if ( currentPiece.getColorOfPiece() == ChessGamePiece.WHITE ){
                 return true;
@@ -125,7 +125,7 @@ public class ChessGameEngine{
         else
         {
             board.resetBoard( false );
-            // System.exit(0);
+          
         }
     }
 
@@ -154,31 +154,30 @@ public class ChessGameEngine{
                     JOptionPane.WARNING_MESSAGE );
             }
             currentPlayer = currentPlayer == 1 ? 2 : 1;
-            // check the next player's conditions as well.
+       
         }
         currentPlayer = origPlayer;
         nextTurn();
     }
 
     public int determineGameLost(){
-        if ( king1.isChecked( board ) && !playerHasLegalMoves( 1 ) ) // player 1
+        if ( king1.isChecked( board ) && !playerHasLegalMoves( 1 ) ) 
         // loss
         {
             return 1;
         }
-        if ( king2.isChecked( board ) && !playerHasLegalMoves( 2 ) ) // player 2
-        // loss
+        if ( king2.isChecked( board ) && !playerHasLegalMoves( 2 ) ) 
         {
             return 2;
         }
         if ( ( !king1.isChecked( board ) && !playerHasLegalMoves( 1 ) )
             || ( !king2.isChecked( board ) && !playerHasLegalMoves( 2 ) )
             || ( board.getAllWhitePieces().size() == 1 &&
-                board.getAllBlackPieces().size() == 1 ) ) // stalemate
+                board.getAllBlackPieces().size() == 1 ) )
         {
             return -1;
         }
-        return 0; // game is still in play
+        return 0;
     }
     // ----------------------------------------------------------
 
@@ -217,7 +216,7 @@ public class ChessGameEngine{
         else
         {
             if ( pieceOnSquare == null ||
-                !pieceOnSquare.equals( currentPiece ) ) // moving
+                !pieceOnSquare.equals( currentPiece ) )
             {
                 boolean moveSuccessful =
                     currentPiece.move(
@@ -244,7 +243,7 @@ public class ChessGameEngine{
                 firstClick = true;
             }
             else
-            // user is just unselecting the current piece
+         
             {
                 firstClick = true;
             }

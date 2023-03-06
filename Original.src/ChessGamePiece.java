@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
-public abstract class ChessGamePiece   {
+ abstract class ChessGamePiece   {
 	
     private boolean             skipMoveGeneration;
     private int                 pieceColor;
@@ -56,7 +56,7 @@ public abstract class ChessGamePiece   {
      * @param pieceColor
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public ChessGamePiece(
+    protected ChessGamePiece(
         ChessGameBoard board,
         int row,
         int col,
