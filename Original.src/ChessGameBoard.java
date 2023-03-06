@@ -8,42 +8,23 @@ import java.awt.GridLayout;
 /**
  * The panel that represents the Chess game board. Contains a few methods that
  * allow other classes to access the physical board.
- *
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
  */
 public class ChessGameBoard extends JPanel{
     private BoardSquare[][] chessCells;
     private BoardListener   listener;
     // ----------------------------------------------------------
-    /**
-     * Returns the entire board.
-     *
-     * @return BoardSquare[][] the chess board
-     */
+
     public BoardSquare[][] getCells(){
         return chessCells;
     }
-    /**
-     * Checks to make sure row and column are valid indices.
-     * @param row the row to check
-     * @param col the column to check
-     * @return boolean true if they are valid, false otherwise
-     */
+
     private boolean validateCoordinates( int row, int col ){
         return chessCells.length > 0 && chessCells[0].length > 0 &&
             row < chessCells.length && col < chessCells[0].length
             && row >= 0 && col >= 0;
     }
     // ----------------------------------------------------------
-    /**
-     * Gets the BoardSquare at row 'row' and column 'col'.
-     * @param row the row to look at
-     * @param col the column to look at
-     * @return BoardSquare the square found, or null if it does not exist
-     */
+
     public BoardSquare getCell( int row, int col ){
         if ( validateCoordinates( row, col ) ){
             return chessCells[row][col];
@@ -51,11 +32,7 @@ public class ChessGameBoard extends JPanel{
         return null;
     }
     // ----------------------------------------------------------
-    /**
-     * Clears the cell at 'row', 'col'.
-     * @param row the row to look at
-     * @param col the column to look at
-     */
+
     public void clearCell(int row, int col){
         if ( validateCoordinates( row, col ) ){
             chessCells[row][col].clearSquare();
@@ -68,11 +45,7 @@ public class ChessGameBoard extends JPanel{
         }
     }
     // ----------------------------------------------------------
-    /**
-     * Gets all the white game pieces on the board.
-     *
-     * @return ArrayList<GamePiece> the pieces
-     */
+
     public ArrayList<ChessGamePiece> getAllWhitePieces(){
         ArrayList<ChessGamePiece> whitePieces = new ArrayList<ChessGamePiece>();
         for ( int i = 0; i < 8; i++ ){
@@ -87,11 +60,7 @@ public class ChessGameBoard extends JPanel{
         return whitePieces;
     }
     // ----------------------------------------------------------
-    /**
-     * Gets all the black pieces on the board
-     *
-     * @return ArrayList<GamePiece> the pieces
-     */
+
     public ArrayList<ChessGamePiece> getAllBlackPieces(){
         ArrayList<ChessGamePiece> blackPieces = new ArrayList<ChessGamePiece>();
         for ( int i = 0; i < 8; i++ ){
@@ -116,13 +85,7 @@ public class ChessGameBoard extends JPanel{
         initializeBoard();
     }
     // ----------------------------------------------------------
-    /**
-     * Clears the board of all items, including any pieces left over in the
-     * graveyard, and all old game logs.
-     * @param addAfterReset if true, the board will add the BoardSquares
-     * back to the board, if false it will simply reset everything and leave
-     * the board blank.
-     */
+
     public void resetBoard ( boolean addAfterReset ){
         chessCells = new BoardSquare[8][8];
         this.removeAll();
@@ -151,10 +114,7 @@ public class ChessGameBoard extends JPanel{
         //revalidate();
         // only the combination of these two calls work...*shrug*
     }
-    /**
-     * (Re)initializes this ChessGameBoard to its default layout with all 32
-     * pieces added.
-     */
+  
     public void initializeBoard(){
         resetBoard( false );
         for ( int i = 0; i < chessCells.length; i++ ){
@@ -223,14 +183,7 @@ public class ChessGameBoard extends JPanel{
             }
         }
     }
-    /**
-     * Listens for clicks on BoardSquares.
-     *
-     * @author Ben Katz (bakatz)
-     * @author Danielle Bushrow (dbushrow)
-     * @author Myles David (davidmm2)
-     * @version 2010.11.16
-     */
+
     private class BoardListener
         implements MouseListener
     {
@@ -247,36 +200,16 @@ public class ChessGameBoard extends JPanel{
                     .determineActionFromSquareClick( e );
             }
         }
-        /**
-         * Unused method.
-         *
-         * @param e
-         *            the mouse event from the listener
-         */
+
         public void mouseEntered( MouseEvent e ){ /* not used */
         }
-        /**
-         * Unused method.
-         *
-         * @param e
-         *            the mouse event from the listener
-         */
+
         public void mouseExited( MouseEvent e ){ /* not used */
         }
-        /**
-         * Unused method.
-         *
-         * @param e
-         *            the mouse event from the listener
-         */
+
         public void mousePressed( MouseEvent e ){ /* not used */
         }
-        /**
-         * Unused method.
-         *
-         * @param e
-         *            the mouse event from the listener
-         */
+
         public void mouseReleased( MouseEvent e ){ /* not used */
         }
     }
