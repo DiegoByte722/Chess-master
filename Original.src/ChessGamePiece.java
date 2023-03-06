@@ -312,7 +312,7 @@ import javax.swing.ImageIcon;
                     && ( board.getCell( pieceRow - i,
                         pieceColumn + i).getPieceOnSquare() == null ) ){
                     moves.add( ( pieceRow - i ) + "," + ( pieceColumn + i ) );
-                    count++;
+           
                 }
                 else if ( isEnemy( board, pieceRow - i, pieceColumn + i ) ){
                     moves.add( ( pieceRow - i ) + "," + ( pieceColumn + i ) );
@@ -349,7 +349,7 @@ import javax.swing.ImageIcon;
                     && ( board.getCell( pieceRow + i,
                         pieceColumn - i ).getPieceOnSquare() == null ) ){
                     moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
-                    count++;
+    
                 }
                 else if ( isEnemy( board, pieceRow + i, pieceColumn - i ) ){
                     moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
@@ -386,7 +386,7 @@ import javax.swing.ImageIcon;
                     && ( board.getCell( pieceRow + i,
                         pieceColumn + i ).getPieceOnSquare() == null ) ){
                     moves.add( ( pieceRow + i ) + "," + ( pieceColumn + i ) );
-                    count++;
+     
                 }
                 else if ( isEnemy( board, pieceRow + i, pieceColumn + i ) ){
                     moves.add( ( pieceRow + i ) + "," + ( pieceColumn + i ) );
